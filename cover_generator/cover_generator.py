@@ -5,7 +5,7 @@ from face_detection.face_detection import FaceDetectionModel
 
 
 class CoverGenerator:
-    def __int__(self):
+    def __init__(self):
         self.image_matting_model = ImageMattingModel()
         self.face_detection_model = FaceDetectionModel()
         self.clickbait_generator_model = ClickBaitGenerator()
@@ -54,12 +54,23 @@ class CoverGenerator:
         Find frame with a single person and the most detector confidence
         """
 
-        best_frame = []
-        for frame in video:
-            detections = self.face_detection_model(frame)
+        best_frame = None
+        highest_confidence = None
+        num_frames = 0
 
-            if len(detections) == 1:
-                best_frame = frame
+        while True:
+            has_frame, frame = video.read()
+
+            if not has_frame:
+                break
+
+            num_frames += 1
+            if num_frames % 2000 == 0:
+                detections = self.face_detection_model(frame)
+
+                if len(detections) == 1 and (best_frame is None or highest_confidence < detections['face_1']['score']):
+                    best_frame = frame
+                    highest_confidence = detections['face_1']['score']
 
         return best_frame
 
