@@ -1,3 +1,5 @@
+from summarization.token_classificaton import TokenClassification
+from summarization.clickbaiter import ClickBaitGenerator
 from image_matting.image_matting import ImageMattingModel
 from face_detection.face_detection import FaceDetectionModel
 
@@ -6,6 +8,8 @@ class CoverGenerator:
     def __int__(self):
         self.image_matting_model = ImageMattingModel()
         self.face_detection_model = FaceDetectionModel()
+        self.clickbait_generator_model = ClickBaitGenerator()
+        self.token_classification = TokenClassification()
 
     def __call__(self, params):
         """
@@ -25,8 +29,10 @@ class CoverGenerator:
         person = self.extract_person(frame)
 
         # Summarize description for clickbait phrase
+        clickbait_sentence = self.clickbait_generator_model.inference(params.text)
 
         # Extract keywords for prompt
+        keywords_for_generation = self.token_classification.inference(params.text)
 
         # Generate background
 
