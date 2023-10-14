@@ -12,7 +12,7 @@ class ImageMattingModel:
     Used libraries:
         https://github.com/ZHKKKe/MODNet
     """
-    TRAINED_ONNX_MODEL_PATH = "./pretrained/modnet_photographic_portrait_matting.onnx"
+    TRAINED_ONNX_MODEL_PATH = "./cover_generator/image_matting/modnet_photographic_portrait_matting.onnx"
 
     def __init__(self, ref_size=512):
         # Resizing size
