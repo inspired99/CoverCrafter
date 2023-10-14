@@ -1,3 +1,7 @@
 retina-face==0.0.13
 onnxruntime==1.16.1
 opencv-python==4.8.1.78
+transformers==4.34.0
+sentencepiece==0.1.99
+pymorphy2==0.9.1
+pymorphy2-dicts-ru==2.4.417127.4579844
