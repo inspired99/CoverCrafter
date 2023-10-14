@@ -9,3 +9,6 @@ opencv-contrib-python==4.8.0.76
 opencv-python==4.8.0.76
 opencv-python-headless==4.8.1.78
 Pillow==9.4.0
+sacremoses==0.0.53
+accelerate==0.22.0
+diffusers==0.21.4
