@@ -1,3 +1,4 @@
+from merge_text_and_image.text_and_image_merger import Joiner
 from summarization.token_classificaton import TokenClassification
 from summarization.clickbaiter import ClickBaitGenerator
 from image_matting.image_matting import ImageMattingModel
@@ -10,6 +11,7 @@ class CoverGenerator:
         self.face_detection_model = FaceDetectionModel()
         self.clickbait_generator_model = ClickBaitGenerator()
         self.token_classification = TokenClassification()
+        self.merger_image_and_text = Joiner()
 
     def __call__(self, params):
         """
