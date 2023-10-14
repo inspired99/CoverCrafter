@@ -6,13 +6,14 @@ import os
 
 
 class Joiner:
-    def __init__(self, width_of_line=30, path_to_ttf=None, background_color=(236, 78, 32)):
+    def __init__(self, width_of_line=30, path_to_ttf=None, background_color=(236, 78, 32), text_size=200):
         self.width_of_line = width_of_line  # сколько символов в одной линии для текста
         self.background_color = background_color  # задний фон текста
         if path_to_ttf is None:  # стиль текста
             self.path_to_ttf = os.path.join(cv2.__path__[0], 'qt', 'fonts', 'DejaVuSans.ttf')
         else:
             self.path_to_ttf = path_to_ttf
+        self.text_size = text_size
 
     def run(self, img, text):
         with Image.open(img) as img:
@@ -20,7 +21,7 @@ class Joiner:
             draw = ImageDraw.Draw(img)
 
             # style of text
-            font = ImageFont.truetype(self.path_to_ttf, size=200)
+            font = ImageFont.truetype(self.path_to_ttf, size=self.text_size)
 
             # position of text
             textwidth, textheight = draw.textsize(text, font)
