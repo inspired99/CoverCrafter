@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --cat-primary: #1f1e5b;
+  --cat-text: #264258;
+  --cat-secondary: #a67232;
+  --cat-light: #EFEFEF;
+  --cat-add: #383891;
+/*   pink: #ea33c2*/
+/*   green-lime: #75fa5a*/
+/*   violet: #a924dd */
+}
+
+* {
+    font-family: 'Jura', sans-serif;
+}
+
+#myProgress {
+    width: 100%;
+}
+
+#uploaded_files {
+    margin-top: 25px;
+    display: flex;
+}
+
+label {
+    font-weight: bold;
+    color: var(--cat-text);
+}
+
+.file-icon i {
+    font-size: 90px;
+    color: var(--cat-text);
+}
+
+.file-details {
+    margin-top: -2px;
+    padding-left: 10px;
+    width: 100%;
+}
+
+.file-details p {
+    margin-bottom: -7px;
+}
+
+small {
+    margin-top: 0;
+    color: #000;
+}
+
+.btn-primary:hover:not(.btn-link):not(.btn-flat) {
+    background-color: var(--cat-secondary);
+}
+
+.btn-primary:not(.btn-link):not(.btn-flat) {
+    background-color: var(--cat-primary);
+}
+
+.bg-warning {
+    background-color: var(--cat-secondary) !important;
+}
+
+
+.btn.disabled, .btn:disabled {
+    opacity: 1;
+}
+
+.btn-convert {
+    opacity: 1;
+    background-color: var(--cat-secondary) !important;
+    border-color: var(--cat-secondary);
+    cursor: default;
+    /*display: flex;*/
+    /*align-items: center;*/
+}
+
+.file-upload {
+	margin: 0 10px 0 25px;
+}
+
+.file-upload input.upload {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+    z-index: 10;
+	font-size: 20px;
+	cursor: pointer;
+	height: 36px;
+	opacity: 0;
+}
+
+.progress-bar {
+    font-size: 30px;
+}
+
+.not-visible {
+    display: none;
+}
+
+.form-control {
+    background-image: none;
+}
+
+.form-control:focus {
+    background-image: linear-gradient(var(--cat-secondary), var(--cat-secondary));
+}
+
+
+.spinner-border-sm {
+    height: 1rem;
+    border-width: .12em;
+}
+
+.navbar {
+    background-color: var(--cat-primary) !important;
+    color: white !important;
+    font-size: 20px;
+}
+
+
+.about-text {
+    font-size: 25px;
+    top: 20px;
+}
+
+.inside-text {
+    width: 30rem;
+    position: relative;
+    top: 30px;
+}
+
+
+.report-block {
+    position: relative;
+    top: 50px;
+}
+
+.navbar-brand
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: -25px;
+    text-align: center;
+    margin: auto;
+}
+

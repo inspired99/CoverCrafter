@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3 text-center">
+            <img src="{% static 'ph/ph_vadim.jpg' %}" alt="Description" class="img-fluid">
+            <p class="font-weight-bold">Вадим Шабашов <br> Machine Learning Engineer</p>
+        </div>
+        <div class="col-md-3 text-center">
+            <img src="{% static 'ph/ph_elisey.jpg' %}" alt="Description" class="img-fluid">
+            <p class="font-weight-bold">Елисей Евсеев <br> Machine Learning Engineer</p>
+        </div>
+        <div class="col-md-3 text-center">
+            <img src="{% static 'ph/ph_anvar.jpg' %}" alt="Description" class="img-fluid">
+            <p class="font-weight-bold">Анвар Тлямов <br> Data Scientist</p>
+        </div>
+        <div class="col-md-3 text-center">
+            <img src="{% static 'ph/ph_dmitry.jpg' %}" alt="Description" class="img-fluid">
+            <p class="font-weight-bold">Дмитрий Сайфулин <br> Data Engineer</p>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <p class="font-weight-bold">Команда CatWorker$</p> была создана в марте 2022 студентами корпоративной магистратуры ИТМО
+            "Разработка программного обеспечения". С самого начала учебы мы сработались как команда
+            и выполняли групповые проекты вместе. Сейчас мы пробуем свои силы в хакатонах, знаем сильные
+            и слабые стороны друг друга, организуя dream-team.
+        </div>
+    </div>
+</div>
+
+{% endblock %}
