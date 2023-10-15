@@ -14,7 +14,7 @@ class NSFWDetector:
         https://github.com/GantMan/nsfw_model
     """
 
-    TRAINED_MODEL_PATH = "./cover_generator/nsfw_detector/saved_model.h5"
+    TRAINED_MODEL_PATH = "./cover_generator/nsfw_detector/nsfw_detector_trained_model.h5"
     IMAGE_DIM = 224
     CATEGORIES = ['drawings', 'hentai', 'neutral', 'porn', 'sexy']
 
