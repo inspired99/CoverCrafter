@@ -1,4 +1,4 @@
-from cover_generator.image_generation.prompt_translator.translation import TranslatorModel
+from ..prompt_translator.translation import TranslatorModel
 from diffusers import AutoPipelineForText2Image
 
 import torch
