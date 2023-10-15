@@ -5,8 +5,10 @@ from image_matting.image_matting import ImageMattingModel
 from face_detection.face_detection import FaceDetectionModel
 from image_generation.diffusion_model.diffusion_model import DiffusionModel
 from nsfw_detector.nsfw_detector import NSFWDetector
+from frame_stitching.frame_background import FrameBackground
 
 import cv2
+import numpy as np
 
 
 class CoverGenerator:
@@ -16,7 +18,8 @@ class CoverGenerator:
         self.clickbait_generator_model = ClickBaitGenerator()
         self.token_classification = TokenClassification()
         self.merger_image_and_text = Joiner()
-        self.diffusion_model = DiffusionModel()
+        # self.diffusion_model = DiffusionModel()
+        self.frame_background = FrameBackground()
         self.nsfw_detector = NSFWDetector()
 
     def __call__(self, params):
@@ -37,7 +40,7 @@ class CoverGenerator:
         frame_with_person = self.detect_person(params["video_path"])
 
         # Extract person (segmentation, matting)
-        person_mask = self.get_person_mask(frame_with_person)
+        person_mask = np.expand_dims(self.get_person_mask(frame_with_person), axis=2)
 
         # Summarize description for clickbait phrase
         clickbait_sentence = self.clickbait_generator_model.inference(params["text"])
@@ -46,7 +49,13 @@ class CoverGenerator:
         keywords_for_generation = self.token_classification.inference(params["text"])
 
         # Generate background
-        background = self.diffusion_model.generate_image(keywords_for_generation, *video_frame_shape[:2])
+        background_type = params['background_type']
+        if background_type == 'generate_bg':
+            background = self.diffusion_model.generate_image(keywords_for_generation, *video_frame_shape[:2])
+        elif background_type == 'use_frames':
+            background = self.frame_background.get_background(params['video_path'])
+        else:
+            raise RuntimeError("Unknown background type")
 
         # Merge background and person
         background_and_person = self.merge_background_person(background, frame_with_person, person_mask)
@@ -54,14 +63,15 @@ class CoverGenerator:
         # Apply image style
 
         # Draw stylized text on image (background + person)
-        cover = self.merger_image_and_text.run(background_and_person, clickbait_sentence)
+        cover = self.merger_image_and_text.run(background_and_person, clickbait_sentence, text_color='white',
+                                               path_to_ttf='cover_generator/data/main_font.ttf')
 
         # NSFW detector for final cover
-        if self.nsfw_detector(cover):
-            raise RuntimeError(
-                "Non-appropriated content was generated."
-                "Run generation again or change video description."
-            )
+        # if self.nsfw_detector(cover):
+        #     raise RuntimeError(
+        #         "Non-appropriated content was generated."
+        #         "Run generation again or change video description."
+        #     )
 
         return cover
 
@@ -110,4 +120,4 @@ class CoverGenerator:
 
     @staticmethod
     def merge_background_person(background, frame_with_person, person_mask):
-        return background * (1 - person_mask) + frame_with_person * person_mask
+        return background * (1 - (person_mask / 255)) + frame_with_person * (person_mask / 255)

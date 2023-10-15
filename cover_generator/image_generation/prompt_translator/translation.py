@@ -10,8 +10,8 @@ class TranslatorModel:
     def __init__(self):
         self.model_path = "facebook/wmt19-ru-en"
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
-        self.tokenizer = FSMTTokenizer.from_pretrained(self.model_path).to(self.device)
-        self.model = FSMTForConditionalGeneration.from_pretrained(self.model_path).to(self.device)
+        self.tokenizer = FSMTTokenizer.from_pretrained(self.model_path)
+        self.model = FSMTForConditionalGeneration.from_pretrained(self.model_path)
 
     def translate(self, text):
         input_ids = self.tokenizer.encode(text, return_tensors="pt")
