@@ -27,7 +27,7 @@ class Joiner:
                 result[-1] = result[-1] + ' '
         return ''.join(result)
 
-    def run(self, img, text, path_to_ttf, text_size=75):
+    def run(self, img, text,  text_color, path_to_ttf, text_size=75):
         offset = 20
         with Image.open(img) as img:
             width, height = img.size
@@ -49,14 +49,6 @@ class Joiner:
                 lines.append(i)
 
             start_height = int(height * 4 / 10)
-            np_image = np.array(img)
-            avg_color_per_row = np.average(np_image, axis=0)
-            avg_color = np.average(avg_color_per_row, axis=0)
-
-            if np.mean(avg_color) < 128:
-                text_color = "white"
-            else:
-                text_color = "black"
 
             # Add each line to the image
             for i, line in enumerate(lines):
