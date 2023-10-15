@@ -10,7 +10,7 @@ class DiffusionModel:
     """
 
     def __init__(self):
-        self.model_path = "kandinsky-community/kandinsky-2-2-decoder"
+        self.model_path = "runwayml/stable-diffusion-v1-5"
         self.generation_pipeline = AutoPipelineForText2Image.from_pretrained(self.model_path, torch_dtype=torch.float16)
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
         self.default_negative_prompt = (
