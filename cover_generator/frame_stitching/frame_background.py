@@ -8,16 +8,15 @@ class FrameBackground:
     Stitching two random frames into one with center crop or just pick random frame from video
     """
 
-    def __init__(self, path_to_video):
-        self.path_to_video = path_to_video
+    def __init__(self):
         self.mode = "double-frame"
 
     def random_choice(self):
         if random.random() > 0.5:
             self.mode = "single-frame"
 
-    def get_single_frame(self):
-        vid_cap = cv2.VideoCapture(self.path_to_video)
+    def get_single_frame(self, path_to_video):
+        vid_cap = cv2.VideoCapture(path_to_video)
         success, image = vid_cap.read()
 
         count = 0
@@ -60,8 +59,8 @@ class FrameBackground:
 
         return final
 
-    def get_double_frame(self):
-        vid_cap = cv2.VideoCapture(self.path_to_video)
+    def get_double_frame(self, path_to_video):
+        vid_cap = cv2.VideoCapture(path_to_video)
         total_frames = int(vid_cap.get(cv2.CAP_PROP_FRAME_COUNT))
         random_frames = random.sample(range(0, total_frames), 2)
 
@@ -81,11 +80,11 @@ class FrameBackground:
         merged_image = self.merge_images(frames)
         return merged_image
 
-    def get_background(self):
+    def get_background(self, path_to_video):
         self.random_choice()
         if self.mode == 'single-frame':
-            background = self.get_single_frame()
+            background = self.get_single_frame(path_to_video)
         else:
-            background = self.get_double_frame()
+            background = self.get_double_frame(path_to_video)
 
         return background

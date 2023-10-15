@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-lg-6 col-md-6" style="margin: 40px auto; display: block;">
+    <form enctype="multipart/form-data" method="POST" action="" style="text-align: center;" id="video_form">
+        {% csrf_token %}
+
+        <div><label for="video_upload" class="form-label">Выберите видео для загрузки</label></div>
+        <div class="file-upload btn btn-primary">
+            <span>ВЫБРАТЬ ФАЙЛ</span>
+            <input type="file" name="file attachment" class="upload" id="video_upload"/>
+        </div>
+
+        <button type="submit" id="submit" class="btn btn-primary" name="submit_video_form">ЗАГРУЗИТЬ ВИДЕО</button>
+    </form>
+
+    <form method="post" enctype="multipart/form-data" action="" style="text-align: center;" id="cover_options_form">
+        {% csrf_token %}
+
+        <div><label for="video_upload" class="form-label">Выберите фото пользователя</label></div>
+        <div class="file-upload btn btn-primary">
+            <span>ВЫБРАТЬ ФАЙЛ</span>
+            <input type="file" name="face_picture" class="upload" id="id_face_picture"/>
+        </div>
+
+        {% for field in cover_options_form %}
+            {% if not field.name == "face_picture" %}
+                <p>{{ field.label_tag }} {{ field }}</p>
+            {% endif %}
+        {% endfor %}
+
+        <button type="submit" class="btn btn-primary" name="submit_cover_options_form">ОТПРАВИТЬ ПАРАМЕТРЫ</button>
+    </form>
+
+    {# progress bar #}
+    <div id="uploaded_files"></div>
+
+    {# spinner and running pipeline #}
+    <div id="run_pipeline" hidden class="run_pipeline text-center">
+        {# кнопка #}
+        <a id="run_button" href="{% url 'run' %}" class="btn btn-primary">ГЕНЕРИРОВАТЬ</a>
+        <div class="d-flex justify-content-center">
+            <button id="spinner-box"
+                    class="btn btn-primary btn-convert"
+                    type="button"
+                    hidden disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Обработка...
+            </button>
+        </div>
+    </div>
+
+    {# result cover #}
+    <div id="result_file" class="text-center" hidden>
+        <a href="{% url 'download' %}" class="btn btn-primary" id="pass_file">СОХРАНИТЬ ОБЛОЖКУ</a>
+    </div>
+
+
+</div>
+
+{% endblock %}
+
+
