@@ -36,7 +36,10 @@ class CoverGenerator:
         video_frame_shape = self.get_video_frame_shape(params["video_path"])
 
         # Find frame with a person
-        frame_with_person = self.detect_person(params["video_path"])
+        if "face_path" in params:
+            frame_with_person = cv2.imread(params["face_path"])
+        else:
+            frame_with_person = self.detect_person(params["video_path"])
 
         # Extract person (segmentation, matting)
         person_mask = self.get_person_mask(frame_with_person)
@@ -51,7 +54,7 @@ class CoverGenerator:
         background_type = params['background_type']
         if background_type == 'generate_bg':
             background = self.diffusion_model.generate_image(keywords_for_generation, *video_frame_shape[:2])
-        elif background_type == 'use_frames':
+        else:
             background = self.frame_background.get_background(params['video_path'])
 
         # Merge background and person
@@ -59,8 +62,9 @@ class CoverGenerator:
 
         # Apply image style
 
+        text_decor = params["text_decor"]
         # Draw stylized text on image (background + person)
-        cover = self.merger_image_and_text.run(background_and_person, clickbait_sentence, text_color='white',
+        cover = self.merger_image_and_text.run(background_and_person, clickbait_sentence, text_color=text_decor,
                                                path_to_ttf='cover_generator/data/main_font.ttf')
 
         # NSFW detector for final cover

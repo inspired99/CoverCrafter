@@ -6,6 +6,7 @@ from django.http import JsonResponse
 from django.http.response import HttpResponse
 from django.shortcuts import render
 
+from cover_generator.cover_generator import CoverGenerator
 from .forms import CoverForm
 from .models import VideoFile
 
@@ -119,25 +120,24 @@ def run_pipeline(request):
     # TODO: change to NONE
     # 1. MODE = "FAKE" псевдо-работа, зависание на 10 секунд
     # 2. MODE = "NONE" или что угодно другое, чтобы запустить весь пайплайн
-    MODE = "FAKE"
+    MODE = "NONE"
 
     f_name = request.session['file_name']
     params = {}
     params['video_path'] = f"media/{request.session['file_name']}"
     params['face_path'] = f"media/face/{request.session['face_picture']}" if 'face_picture' in request.session else None
     params['background_type'] = request.session['background_type']
-    params['description_text'] = request.session['description_text']
+    params['text'] = request.session['description_text']
     params['text_decor'] = request.session['text_decor']
     if f_name:
         print((10 * "-") + "PIPELINE IS RUNNING" + (10 * "-"), "for file", f_name)
         if MODE == "FAKE":
             sleep(5)
-            response = JsonResponse({"pipeline_status": "done"})
         # TODO: launch pipeline here
-        # else:
-            #     response = pipeline.run(...)
-
-            return response
+        else:
+            cg = CoverGenerator()
+            cg(params)
+        return JsonResponse({"pipeline_status": "done"})
 
     return render(request, 'index.html')
 

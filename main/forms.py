@@ -9,9 +9,9 @@ class CoverForm(forms.ModelForm):
         ("use_frames", "Использовать кадры из видео"),
     )
     TEXT_CHOICES = (
-        ("dark_decor", "Темный"),
-        ("light_decor", "Светлый"),
-        ("color_decor", "Яркий")
+        ("red", "Красный"),
+        ("white", "Светлый"),
+        ("yellow", "Яркий")
     )
     COVER_STYLE_CHOICES = (
         ("no_style", "Без стиля"),
@@ -37,7 +37,7 @@ class CoverForm(forms.ModelForm):
     text_decor = forms.ChoiceField(
         label="Оформление текста",
         widget=forms.Select(attrs={"class": "form-control"}),
-        initial="dark_decor",
+        initial="white",
         choices=TEXT_CHOICES,
         required=True
     )
