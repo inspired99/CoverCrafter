@@ -13,3 +13,4 @@ sacremoses==0.0.53
 accelerate==0.22.0
 diffusers==0.21.4
 tensorflow-hub==0.15.0
+numpy==1.23.5
