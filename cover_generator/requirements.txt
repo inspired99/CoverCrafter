@@ -6,7 +6,6 @@ sentencepiece==0.1.99
 pymorphy2==0.9.1
 pymorphy2-dicts-ru==2.4.417127.4579844
 opencv-contrib-python==4.8.0.76
-opencv-python==4.8.0.76
 opencv-python-headless==4.8.1.78
 Pillow==9.4.0
 sacremoses==0.0.53
@@ -14,3 +13,4 @@ accelerate==0.22.0
 diffusers==0.21.4
 tensorflow-hub==0.15.0
 numpy==1.23.5
+protobuf==4.24.4
