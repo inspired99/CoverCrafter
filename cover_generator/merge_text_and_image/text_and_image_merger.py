@@ -29,37 +29,37 @@ class Joiner:
 
     def run(self, img, text,  text_color, path_to_ttf, text_size=75):
         offset = 20
-        with Image.open(img) as img:
-            width, height = img.size
-            draw = ImageDraw.Draw(img)
-            font = ImageFont.truetype(path_to_ttf, size=text_size)
-            preprocessed_text = self.preprocess_text(text).split('\n')
+        img = Image.fromarray(img.astype(np.uint8))
+        width, height = img.size
+        draw = ImageDraw.Draw(img)
+        font = ImageFont.truetype(path_to_ttf, size=text_size)
+        preprocessed_text = self.preprocess_text(text).split('\n')
 
-            lines = []
-            for i in preprocessed_text:
-                if not i:
-                    continue
-                if len(i) >= 20:
-                    splitted_i = i.split(' ')
-                    if splitted_i:
-                        lines.append(' '.join(splitted_i[:-1]))
+        lines = []
+        for i in preprocessed_text:
+            if not i:
+                continue
+            if len(i) >= 20:
+                splitted_i = i.split(' ')
+                if splitted_i:
+                    lines.append(' '.join(splitted_i[:-1]))
 
-                    lines.append(splitted_i[-1])
-                    continue
-                lines.append(i)
+                lines.append(splitted_i[-1])
+                continue
+            lines.append(i)
 
-            start_height = int(height * 4 / 10)
+        start_height = int(height * 4 / 10)
 
-            # Add each line to the image
-            for i, line in enumerate(lines):
-                line_width, line_height = font.getsize(line)
-                position = (width - line_width - offset, start_height + i * line_height)
-                position2 = (width - line_width - 4 - offset, start_height + i * line_height + 4)
-                # draw.rectangle([position, (position[0] + line_width, position[1] + line_height)],
-                #                 fill=background_color)
-                draw.text(position, line, font=font, fill='black')  # границы букв
-                draw.text(position2, line, font=font, fill=text_color)
+        # Add each line to the image
+        for i, line in enumerate(lines):
+            line_width, line_height = font.getsize(line)
+            position = (width - line_width - offset, start_height + i * line_height)
+            position2 = (width - line_width - 4 - offset, start_height + i * line_height + 4)
+            # draw.rectangle([position, (position[0] + line_width, position[1] + line_height)],
+            #                 fill=background_color)
+            draw.text(position, line, font=font, fill='black')  # границы букв
+            draw.text(position2, line, font=font, fill=text_color)
 
-            # Save the image
-            # img.save('image_with_text.jpg')
-            return img
+        # Save the image
+        # img.save('image_with_text.jpg')
+        return img
