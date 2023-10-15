@@ -54,7 +54,8 @@ class CoverGenerator:
         # Apply image style
 
         # Draw stylized text on image (background + person)
-        cover = self.merger_image_and_text.run(background_and_person, clickbait_sentence)
+        cover = self.merger_image_and_text.run(background_and_person, clickbait_sentence,
+                                               path_to_ttf='cover_generator/data/main_font.ttf')
 
         # NSFW detector for final cover
         if self.nsfw_detector(cover):
