@@ -5,6 +5,7 @@ from image_matting.image_matting import ImageMattingModel
 from face_detection.face_detection import FaceDetectionModel
 from image_generation.diffusion_model.diffusion_model import DiffusionModel
 from nsfw_detector.nsfw_detector import NSFWDetector
+from frame_stitching.frame_background import FrameBackground
 
 import cv2
 
@@ -17,6 +18,7 @@ class CoverGenerator:
         self.token_classification = TokenClassification()
         self.merger_image_and_text = Joiner()
         self.diffusion_model = DiffusionModel()
+        self.frame_background = FrameBackground()
         self.nsfw_detector = NSFWDetector()
 
     def __call__(self, params):
@@ -46,7 +48,11 @@ class CoverGenerator:
         keywords_for_generation = self.token_classification.inference(params["text"])
 
         # Generate background
-        background = self.diffusion_model.generate_image(keywords_for_generation, *video_frame_shape[:2])
+        background_type = params['background_type']
+        if background_type == 'generate_bg':
+            background = self.diffusion_model.generate_image(keywords_for_generation, *video_frame_shape[:2])
+        elif background_type == 'use_frames':
+            background = self.frame_background.get_background(params['video_path'])
 
         # Merge background and person
         background_and_person = self.merge_background_person(background, frame_with_person, person_mask)
