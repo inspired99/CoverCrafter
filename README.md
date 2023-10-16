@@ -75,9 +75,9 @@ Here you can see an automatic generation of video preview by user with text prom
 
 ## Our Dream Team 
 
-1. Vadim Shabashov (ITMO) - Image Matting and Detection
+1. Vadim Shabashov (ITMO) - Image Matting + People Detection
 
-2. Elisey Evseev (ITMO) - Background Generation
+2. Elisey Evseev (ITMO) - Background Generation + Processing Text Background
 
 3. Anvar Tliamov (ITMO) - Text summarization + Prompt summarization
 
