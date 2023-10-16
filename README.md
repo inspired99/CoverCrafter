@@ -1,5 +1,4 @@
 # Video cover generation with CoverCrafter
-<img width="956" alt="Снимок экрана 2023-10-16 в 15 55 22" src="https://github.com/inspired99/CoverCrafter/assets/64794482/059d822b-4581-4bff-aa8c-e0d4ea4b2057">
 
 ## Description
 
@@ -15,6 +14,8 @@ The resulting cover consists of:
 Please, take a look at our [presentation](CoverCrafter.pdf) for more details and examples.
 
 ## UI
+
+<img width="956" alt="Снимок экрана 2023-10-16 в 15 55 22" src="https://github.com/inspired99/CoverCrafter/assets/64794482/059d822b-4581-4bff-aa8c-e0d4ea4b2057">
 
 The user is asked to provide the following parameters:
 - Video
