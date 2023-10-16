@@ -59,7 +59,7 @@ NOTE: the used models are heavy, so two video cards 32 GB are needed.
 
 ## Generation Example
 
-Here you can see an automatic generation of video preview by user with text prompt about cooking video. 
+Here you can see an automatic generation of video preview by user with text prompt about cooking video. The person is taken from video, background was generated automatically and clickbait was also generated based on user preferences and video topic
 
 ![1](https://github.com/inspired99/CoverCrafter/assets/64794482/2d1a82d6-099f-4bc6-afec-37ffa2002172)
 
