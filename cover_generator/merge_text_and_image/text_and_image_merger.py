@@ -1,8 +1,5 @@
 from PIL import Image, ImageDraw, ImageFont
 import numpy as np
-import textwrap
-import cv2
-import os
 
 
 class Joiner:
@@ -60,6 +57,4 @@ class Joiner:
             draw.text(position, line, font=font, fill='black')  # границы букв
             draw.text(position2, line, font=font, fill=text_color)
 
-        # Save the image
-        # img.save('image_with_text.jpg')
-        return img
+        return np.array(img)

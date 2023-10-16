@@ -3,11 +3,14 @@ from cover_generator import CoverGenerator
 
 def main():
     params = {
-        "video_path": "/home/ubuntu/88.mp4",
-        "text": "Чай и сахар - наши друзья"
+        "video_path": "/home/ubuntu/example.mp4",
+        "text": ("Интервью со школьниками. Ребята рассказывают о своих уроках, "
+                 "а учителя жалуются на плохое поведение детей."),
+        'background_type': 'generate_bg',
+        'text_decor': 'white'
     }
 
-    cover_generator = CoverGenerator()
+    cover_generator = CoverGenerator(debug=True)
     cover_generator(params)
 
 

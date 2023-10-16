@@ -1,6 +1,6 @@
 asgiref==3.7.2
 Django==4.2.6
-Pillow==10.0.1
+Pillow==9.5.0
 sqlparse==0.4.4
 typing_extensions==4.8.0
 retina-face==0.0.13
@@ -12,7 +12,6 @@ pymorphy2==0.9.1
 pymorphy2-dicts-ru==2.4.417127.4579844
 opencv-contrib-python==4.8.0.76
 opencv-python-headless==4.8.1.78
-Pillow==9.4.0
 sacremoses==0.0.53
 accelerate==0.22.0
 diffusers==0.21.4

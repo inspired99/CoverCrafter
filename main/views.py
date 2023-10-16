@@ -99,8 +99,7 @@ def index(request):
 
 
 def download(request):
-    # TODO: replace with the pipeline result filename
-    filename = 'default.png'
+    filename = 'cover.png'
 
     if filename:
         file_path = 'result/' + filename
@@ -133,7 +132,6 @@ def run_pipeline(request):
         print((10 * "-") + "PIPELINE IS RUNNING" + (10 * "-"), "for file", f_name)
         if MODE == "FAKE":
             sleep(5)
-        # TODO: launch pipeline here
         else:
             cg = CoverGenerator()
             cg(params)
