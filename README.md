@@ -7,9 +7,9 @@ Web application for cover generation, based on the provided video, description, 
 It can be handy for people without design experience or for those who wish to get a cool cover as soon as possible.
 
 The resulting cover consists of:
-- Speaker
-- Text
-- Background
+- Speaker 
+- Clickbait Text
+- Nice and High-Resolution Background
 
 Please, take a look at our [presentation](CoverCrafter.pdf) for more details and examples.
 
@@ -33,12 +33,15 @@ The user is asked to provide the following parameters:
 ## Components
 
 - Web application
+  - Frontend
+  - Backend
 - Cover generation module
   - Person detection - RetinaFace
   - Human image matting (segmentation) - MODNet
   - Text summarization for keywords - PyMorphy2
   - Text summarization for a clickbait phrase - T5-Russian
   - Background generation - Kandinsky 2.2
+  - Translation prompts - FSTM
 
 ## Web service start
 
