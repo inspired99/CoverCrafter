@@ -69,7 +69,7 @@ Here you can see an automatic generation of video preview by user with text prom
 
 ⏳ Javascript [AJAX]
 
-🤗 HuggingFace (Diffusers)
+🤗 HuggingFace [Diffusers]
 ```
 
 
