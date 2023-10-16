@@ -57,4 +57,18 @@ NOTE: the used models are heavy, so two video cards 32 GB are needed.
 🐍 Python [Django]
 
 ⏳ Javascript [AJAX]
+
+🤗 HuggingFace (Diffusers)
 ```
+
+
+## Our Dream Team 
+
+1. Vadim Shabashov (ITMO) - Image Matting and Detection
+
+2. Elisey Evseev (ITMO) - Background Generation
+
+3. Anvar Tliamov (ITMO) - Text summarization + Prompt summarization
+
+4. Dmitriy Saifulin (ITMO) - Backend + Frontend
+   
