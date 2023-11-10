@@ -67,7 +67,7 @@ Here you can see an automatic generation of video preview by user with text prom
 ```
 🐍 Python [Django]
 
-:fire: Pytorch [models]
+🔥 Pytorch [Machine Learning]
 
 ⏳ Javascript [AJAX]
 
