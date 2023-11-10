@@ -36,7 +36,7 @@ The user is asked to provide the following parameters:
   - Frontend
   - Backend
 - Cover generation module
-  - Person detection - [RetinaFace](https://github.com/serengil/retinaface)
+  - People Face detection - [RetinaFace](https://github.com/serengil/retinaface)
   - Human image matting (segmentation) - [MODNet](https://github.com/ZHKKKe/MODNet)
   - Text summarization for keywords - [PyMorphy2](https://pypi.org/project/pymorphy2/)
   - Text summarization for a clickbait phrase - [T5-Russian](https://huggingface.co/UrukHan/t5-russian-summarization)
