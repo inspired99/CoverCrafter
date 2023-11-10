@@ -36,12 +36,12 @@ The user is asked to provide the following parameters:
   - Frontend
   - Backend
 - Cover generation module
-  - Person detection - RetinaFace
-  - Human image matting (segmentation) - MODNet
-  - Text summarization for keywords - PyMorphy2
-  - Text summarization for a clickbait phrase - T5-Russian
-  - Background generation - Kandinsky 2.2
-  - Translation prompts - FSTM
+  - Person detection - [RetinaFace](https://github.com/serengil/retinaface)
+  - Human image matting (segmentation) - [MODNet](https://github.com/ZHKKKe/MODNet)
+  - Text summarization for keywords - [PyMorphy2](https://pypi.org/project/pymorphy2/)
+  - Text summarization for a clickbait phrase - [T5-Russian](https://huggingface.co/UrukHan/t5-russian-summarization)
+  - Background generation - [Kandinsky 2.2](https://huggingface.co/docs/diffusers/api/pipelines/kandinsky_v22)
+  - Translation prompts - [FSMT](https://huggingface.co/docs/transformers/model_doc/fsmt)
 
 ## Web service start
 
